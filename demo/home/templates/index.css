@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Roboto+Mono&display=swap');
+*{
+    margin:0;
+    padding: 0;
+background-color: blueviolet;
+}
+
+.h1{
+   
+    margin-bottom: 2px solid white;
+   
+}
+
+tasks{
+    display:flex;
+    flex-direction: row;
+}
+.fa-solid{
+padding-left: 20px;
+padding-top: 10px;
+}

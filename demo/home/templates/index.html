@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h2 class="h1 border-bottom border-light-subtle" style="text-align: center; ">To-Do List </h2>
+    <div class="row m-3 ">
+      <div class="  col-4 col-md-12 col-lg-4 bg-info col-sm-12 my-3 border border-dark-subtle "
+        style="height: 530px;background-color: #57B8FF;">
+        <div class="input-group bg-info">
+          <div class="form p-3 bg-info">
+            <form action="" method="post" class="bg-info">
+
+              <input type="text" class="form-control " placeholder="Task's To Be Completed"
+                aria-label="Recipient's username with two button addons">
+
+              <button class="btn btn-outline-secondary border border-danger " type="button" style="color: white;">Add
+                Task</button>
+            </form>
+          </div>
+
+        </div>
+        <div class=" tasks bg-info">
+
+          <h4 class="bg-info">This is task <i class="fa-solid fa-clipboard-check bg-info"></i>
+            <i class="fa-solid fa-delete-left bg-info"></i>
+          </h4>
+
+
+
+
+        </div>
+      </div>
+      <div class="col-4 col-md-12 col-lg-4  col-sm-12 div2 border border-danger " style="background-color: #B66D0D;">
+        <h2 style="background-color: #B66D0D;text-align: center;">Completed Tasks.</h2>
+        <hr>
+        <ul style="background-color: #B66D0D;">
+          <li>
+            <h4 style="background-color: #B66D0D; text-align: center;">This is completed <i
+                class="fa-solid fa-check-double" style="background-color: #B66D0D;"></i></h4>
+          </li>
+        </ul>
+      </div>
+      <div class="del col-4 col-md-12 col-lg-4 col-sm-12 div3 my-3 border border-black"
+        style="background-color: #FE6847">
+        <h2 style="background-color: #FE6847;text-align: center;">Deleted Tasks.</h2>
+        <hr>
+        <ol style="background-color: #FE6847;">
+          <li>
+            <h4 style="background-color: #FE6847; text-align: center;text-decoration: line-through;">This is Deleted
+            </h4>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
