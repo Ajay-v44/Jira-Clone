@@ -52,6 +52,7 @@
                   {{ task.task_description }}
                   <a class="bg-info" href="{% url 'completed_tasks' task.id %}" style="text-decoration: none;"><i class="fa-solid fa-clipboard-check bg-info" style="cursor: pointer;color: black;"></i></a>
                   <a class="bg-info" href="{% url 'deleted_tasks' task.id %}" style="text-decoration: none;"><i class="fa-solid fa-delete-left bg-info" style="cursor: not-allowed;color: red;"></i></a>
+
                 </h4>
               {% endif %}
               {% comment %} <button class="btn btn-outline-secondary border border-danger" type="submit" style="color: white;">Add Task</button> {% endcomment %}
@@ -62,11 +63,15 @@
           <h2 style="background-color: #B66D0D;text-align: center;">Completed Tasks.</h2>
           <hr />
           <div class="tasks" style="overflow:scroll;overflow-x: hidden;">
+            <ul>
             {% for task in Tasks %}
               {% if task.status == 'completed' %}
-                <h4 style="background-color: #B66D0D; text-align: center;color: white;">{{ task.task_description }} <i class="fa-solid fa-check-double" style="background-color: #B66D0D;"></i></h4>
-              {% endif %}
+                <li><h4 style="background-color: #B66D0D; text-align: center;color: white;">{{ task.task_description }}                 <a class="" href="{% url 'remove_tasks' task.id %}" style="text-decoration: none;"><i class="fa-solid fa-check-double" style="background-color: #B66D0D;"></i></a></h4></li>
+
+
+                {% endif %}
             {% endfor %}
+            </ul>
           </div>
         </div>
         <div class="del col-4 col-md-12 col-lg-4 col-sm-12 div3 my-3 border border-black shadow-lg card" style="background-color: #FE6847;">
@@ -77,7 +82,7 @@
               {% for task in Tasks %}
                 {% if task.status == 'deleted' %}
                   <li>
-                    <h4 style="background-color: #FE6847; text-align: center;text-decoration: line-through;">{{ task.task_description }}</h4>
+                    <h4 style="background-color: #FE6847; text-align: center;text-decoration: line-through;">{{ task.task_description }}<a class="" href="{% url 'remove_tasks' task.id %}" style="text-decoration: none;"><i class="fa-solid fa-trash" style="color: white;"></i></a></h4>
                   </li>
                 {% endif %}
               {% endfor %}

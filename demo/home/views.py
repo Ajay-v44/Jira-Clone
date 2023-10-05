@@ -28,3 +28,8 @@ def deleted_tasks(request,id):
     queryset.status="deleted"
     queryset.save()
     return redirect('home')
+def remove_tasks(request,id):
+    queryset=Tasks.objects.get(id=id)
+    queryset.status="removed"
+    queryset.save()
+    return redirect('home')
