@@ -49,8 +49,12 @@
             {% for task in Tasks %}
               <h4 class="bg-info" >
                 {{ task.task_description }}
-                <a class="bg-info" href="#" style="text-decoration: none;">  <i class="fa-solid fa-clipboard-check bg-info" style="cursor: pointer;color: black;"></i></a>
-                <a class="bg-info" href="/completed_tasks/{{tasks.id}}" style="text-decoration: none;">  <i class="fa-solid fa-delete-left bg-info" style="cursor: not-allowed;color: red;"></i></a>
+                <a class="bg-info" href="{% url 'completed_tasks' task.id %}" style="text-decoration: none;">  <i class="fa-solid fa-clipboard-check bg-info"  style="cursor: pointer;color: black;"></i></a>
+                <a class="bg-info" href="#" style="text-decoration: none;">  <i class="fa-solid fa-delete-left bg-info" style="cursor: not-allowed;color: red;"></i></a> 
+                
+  
+                  {% comment %} <button class="btn btn-outline-secondary border border-danger" type="submit" style="color: white;">Add Task</button> {% endcomment %}
+                
               </h4>
             {% endfor %}
           </div>

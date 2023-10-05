@@ -20,5 +20,6 @@ def home(request):
 
 def completed_tasks(request,id):
     queryset=Tasks.objects.get(id=id)
-    queryset.delete()
-    return redirect('index.html')
+    queryset.status="completed"
+    queryset.save()
+    return redirect('home')
