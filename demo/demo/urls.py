@@ -21,4 +21,5 @@ from home.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home,name="home"),
+    path('completed_tasks/<id>/',completed_tasks,name="completed_tasks"),
 ]

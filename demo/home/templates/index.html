@@ -47,9 +47,10 @@
           </div>
           <div class="tasks bg-info" style="overflow: scroll;overflow-x: hidden;">
             {% for task in Tasks %}
-              <h4 class="bg-info">
-                {{ task.task_description }} <i class="fa-solid fa-clipboard-check bg-info" style="cursor: pointer;"></i>
-                <i class="fa-solid fa-delete-left bg-info" style="cursor: not-allowed;"></i>
+              <h4 class="bg-info" >
+                {{ task.task_description }}
+                <a class="bg-info" href="#" style="text-decoration: none;">  <i class="fa-solid fa-clipboard-check bg-info" style="cursor: pointer;color: black;"></i></a>
+                <a class="bg-info" href="/completed_tasks/{{tasks.id}}" style="text-decoration: none;">  <i class="fa-solid fa-delete-left bg-info" style="cursor: not-allowed;color: red;"></i></a>
               </h4>
             {% endfor %}
           </div>

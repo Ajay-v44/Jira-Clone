@@ -17,3 +17,8 @@ def home(request):
     context={'Tasks':queryset}
 
     return render(request,'index.html',context)
+
+def completed_tasks(request,id):
+    queryset=Tasks.objects.get(id=id)
+    queryset.delete()
+    return redirect('index.html')
