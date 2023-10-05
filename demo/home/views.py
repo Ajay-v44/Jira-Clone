@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from contextlib import redirect_stderr
+from django.shortcuts import render,redirect
 from .models import *
 
 
@@ -11,5 +12,8 @@ def home(request):
             task_description=task,
         )
         print(task)
+    queryset=Tasks.objects.all()
+   
+    context={'Tasks':queryset}
 
-    return render(request,'index.html')
+    return render(request,'index.html',context)
