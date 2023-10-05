@@ -61,30 +61,28 @@
         <div class="col-4 col-md-12 col-lg-4 col-sm-12 div2 border border-danger shadow-lg" style="background-color: #B66D0D;">
           <h2 style="background-color: #B66D0D;text-align: center;">Completed Tasks.</h2>
           <hr />
-          <div class="tasks " style="overflow:scroll;overflow-x: hidden;">
-            {% for task in Tasks %} 
-             {% if task.status == 'completed' %}
-               <h4 style="background-color: #B66D0D; text-align: center;color: white;" >{{ task.task_description }} <i class="fa-solid fa-check-double" style="background-color: #B66D0D;"></i></h4></li>
-
-
-            {% endif %}
-          {% endfor %}
+          <div class="tasks" style="overflow:scroll;overflow-x: hidden;">
+            {% for task in Tasks %}
+              {% if task.status == 'completed' %}
+                <h4 style="background-color: #B66D0D; text-align: center;color: white;">{{ task.task_description }} <i class="fa-solid fa-check-double" style="background-color: #B66D0D;"></i></h4>
+              {% endif %}
+            {% endfor %}
           </div>
-
-         
         </div>
-        <div class="del col-4 col-md-12 col-lg-4 col-sm-12 div3 my-3 border border-black shadow-lg card" style="background-color: #FE6847">
+        <div class="del col-4 col-md-12 col-lg-4 col-sm-12 div3 my-3 border border-black shadow-lg card" style="background-color: #FE6847;">
           <h2 style="background-color: #FE6847;text-align: center;">Deleted Tasks.</h2>
           <hr />
-          <ol style="background-color: #FE6847;">
-            {% for task in Tasks %} 
-             {% if task.status == 'deleted' %}
-            <li>
-              <h4 style="background-color: #FE6847; text-align: center;text-decoration: line-through;">{{task.task_description}}</h4>
-            </li>
-             {% endif %}
-            {% endfor %}
-          </ol>
+          <div class="tasks" style="overflow:scroll;overflow-x: hidden;">
+            <ol style="background-color: #FE6847;">
+              {% for task in Tasks %}
+                {% if task.status == 'deleted' %}
+                  <li>
+                    <h4 style="background-color: #FE6847; text-align: center;text-decoration: line-through;">{{ task.task_description }}</h4>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ol>
+          </div>
         </div>
       </div>
     </div>
