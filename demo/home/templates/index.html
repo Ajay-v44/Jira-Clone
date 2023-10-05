@@ -17,9 +17,10 @@
           <div class="input-group bg-info">
             <div class="form p-3 bg-info">
               <form action="" method="post" class="bg-info">
-                <input type="text" class="form-control" placeholder="Task's To Be Completed" aria-label="Recipient's username with two button addons" />
+                {% csrf_token %}
+                <input type="text" class="form-control" name="task" placeholder="Task's To Be Completed" aria-label="Recipient's username with two button addons" />
 
-                <button class="btn btn-outline-secondary border border-danger" type="button" style="color: white;">Add Task</button>
+                <button class="btn btn-outline-secondary border border-danger" type="submit" style="color: white;">Add Task</button>
               </form>
             </div>
           </div>
