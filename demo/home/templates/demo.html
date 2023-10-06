@@ -51,8 +51,8 @@
                 <div class="lists draggable" draggable="true">
                   <h4>
                     {{ task.task_description }}
-                    <a href="{% url 'completed_tasks' task.id %}" style="text-decoration: none;"><i class="fa-solid fa-clipboard-check" style="cursor: pointer; color: black;"></i></a>
-                    <a href="{% url 'deleted_tasks' task.id %}" style="text-decoration: none;"><i class="fa-solid fa-delete-left" style="cursor: not-allowed; color: red;"></i></a>
+                    <a href="{% url 'completed_tasks' task.id %}" style="text-decoration: none;"><i class="fa-solid fa-clipboard-check bg-info" style="cursor: pointer; color: black;"></i></a>
+                    <a href="{% url 'deleted_tasks' task.id %}" style="text-decoration: none;"><i class="fa-solid fa-delete-left bg-info" style="cursor: not-allowed; color: red;"></i></a>
                   </h4>
                 </div>
               {% endif %}
@@ -115,14 +115,14 @@
           list.classList.remove('dragging')
         })
       })
-      leftBox.addEventListener('draggable', function (e) {
+      leftBox.addEventListener('dragover', function (e) {
         e.preventDefault()
         const afterElement = getDragAfterElement(leftBox, e.clientY)
         const draggable = document.querySelector('.dragging')
         if (afterElement == null) {
-          rightBox.appendChild(draggable)
+          leftBox.appendChild(draggable)
         } else {
-          rightBox.insertBefore(draggable, afterElement)
+          leftBox.insertBefore(draggable, afterElement)
         }
       })
       
