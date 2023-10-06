@@ -44,3 +44,11 @@ def remove_tasks(request, id):
     queryset.status = "removed"
     queryset.save()
     return redirect('home')
+def update_task_status(request, id, status):
+    try:
+        task = Tasks.objects.get(id=id)
+        task.status = status
+        task.save()
+        return redirect('home')
+    except Tasks.DoesNotExist:
+        return JsonResponse({'success': False, 'error_message': 'Task not found'})
