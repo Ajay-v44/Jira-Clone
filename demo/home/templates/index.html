@@ -231,39 +231,42 @@
                         updateTaskStatus(taskId, 'completed') // Update as "completed" when dropped in the second div
                     } else if (droppable.id === 'right2') {
                         updateTaskStatus(taskId, 'deleted') // Update as "deleted" when dropped in the third div
-                    }
+                    }else if (droppable.id === 'left') {
+                      updateTaskStatus(taskId, 'pending') // Update as "deleted" when dropped in the third div
+                  }
                 }
             })
         })
 
-        // Function to update the task status via AJAX
         function updateTaskStatus(taskId, status) {
-            console.log('Updating task status...'); // Debugging statement
-            console.log('Task ID:', taskId); // Debugging statement
-            console.log('Status:', status); // Debugging statement
-
-            const xhr = new XMLHttpRequest()
-            xhr.open('POST', `/update_task_status/${taskId}/${status}/`, true)
-            xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'))
-
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        const response = JSON.parse(xhr.responseText)
-                        if (response.success) {
+          console.log('Updating task status...'); // Debugging statement
+          console.log('Task ID:', taskId); // Debugging statement
+          console.log('Status:', status); // Debugging statement
+      
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', `/update_task_status/${taskId}/${status}/`, true);
+          xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+      
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                  if (xhr.status === 200) {
+                      const response = JSON.parse(xhr.responseText);
+                      if (response.success) {
+                          console.log(`Task status updated to "${status}" successfully.`);
+                          // Redirect to the home page
                           window.location.href = '/';
-                            console.log(`Task status updated to "${status}" successfully.`)
-                        } else {
-                            console.error('Task not found or status update failed.')
-                        }
-                    } else {
-                        console.error('An error occurred while updating task status.')
-                    }
-                }
-            }
-
-            xhr.send()
-        }
+                      } else {
+                          console.error('Task not found or status update failed.');
+                      }
+                  } else {
+                      console.error('An error occurred while updating task status.');
+                  }
+              }
+          };
+      
+          xhr.send();
+      }
+      
 
         // Function to get the CSRF token from cookies
         function getCookie(name) {
