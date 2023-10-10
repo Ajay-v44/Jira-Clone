@@ -24,6 +24,7 @@ urlpatterns = [
     path('completed_tasks/<int:id>/', completed_tasks, name='completed_tasks'),
     path('deleted_tasks/<int:id>/', deleted_tasks, name='deleted_tasks'),
     path('remove_tasks/<int:id>/', remove_tasks, name='remove_tasks'),
-    # Add the URL pattern for updating the task status
     path('update_task_status/<int:id>/<str:status>/', update_task_status, name='update_task_status'),
+    path('login/',login_page,name='login_page'),
+    path('register/',register_page,name="register_page")
 ]

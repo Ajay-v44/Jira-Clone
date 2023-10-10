@@ -54,3 +54,10 @@ def update_task_status(request, id, status):
         return JsonResponse({'success': True})
     except Tasks.DoesNotExist:
         return JsonResponse({'success': False, 'error_message': 'Task not found'})
+
+
+def login_page(request):
+    return render(request, 'login.html')
+
+def register_page(request):
+    return render(request,'register.html')

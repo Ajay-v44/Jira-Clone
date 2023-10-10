@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Roboto+Mono&display=swap');
-body{
-    margin:0;
-    padding: 0;
-/* background-color: blueviolet; */
-background-image: url(https://wallpapercave.com/wp/wp3701488.jpg);
-}
 
+body {
+    margin: 0;
+    padding: 0;
+  
+    background-image: url(https://wallpapercave.com/wp/wp3701488.jpg);
+  }
 .h1{
    
     margin-bottom: 2px solid white;
