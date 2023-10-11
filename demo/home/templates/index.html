@@ -60,8 +60,10 @@
   <body>
     <div class="container mt-3">
       <h2 class="h1 border-bottom border-light-subtle page-title" style="text-align: center;color: white;">To-Do List</h2>
+      <a href="{% url 'logout_page' %}">
       <button type="button" class="btn btn-danger" id="liveToastBtn">Logout</button>
-      <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), .25)">  welcome  {{request.user.first_name}}   {{request.user.email}}</a>
+    </a>
+      <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), .25)">  welcome  {{request.user.first_name}}   {{request.user.last_name}}</a>
       <div class="row m-3">
         <div class="col-md-12 col-lg-3 m-3 col-sm-12 my-3 border border-dark-subtle shadow-lg card droppable task-container" id="left" style="height: 530px; background-color: #57B8FF;">
           <div class="input-group">

@@ -26,5 +26,6 @@ urlpatterns = [
     path('remove_tasks/<int:id>/', remove_tasks, name='remove_tasks'),
     path('update_task_status/<int:id>/<str:status>/', update_task_status, name='update_task_status'),
     path('login/',login_page,name='login_page'),
-    path('register/',register_page,name="register_page")
+    path('register/',register_page,name="register_page"),
+    path('logout/',logout_page,name='logout_page'),
 ]

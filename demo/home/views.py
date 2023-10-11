@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.http import JsonResponse
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -11,11 +11,13 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url="/login")
 def home(request):
+    email = request.user.email
     if request.method == "POST":
         data = request.POST
         task = data.get('task')
         Tasks.objects.create(
             task_description=task,
+            User_id=email,
         )
         print(task)
     queryset = Tasks.objects.all()
@@ -104,4 +106,6 @@ def register_page(request):
 
             return redirect('/register/')
     return render(request, 'register.html')
-
+def logout_page(request):
+    logout(request)
+    return redirect('/login/')
