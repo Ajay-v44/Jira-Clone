@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.http import JsonResponse
 from django.contrib import messages
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -68,16 +68,18 @@ def login_page(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user = authenticate(request, username=email, password=password)  # Use authenticate to verify the user's credentials
+        # Use authenticate to verify the user's credentials
+        user = authenticate(request, username=email, password=password)
 
         if user is not None:
-            login(request, user)  
+            login(request, user)
             return redirect('home')
         else:
             messages.error(request, 'Invalid login credentials')
             return redirect('/login/')
 
     return render(request, 'login.html')
+
 
 def register_page(request):
     if request.method == "POST":
@@ -106,6 +108,15 @@ def register_page(request):
 
             return redirect('/register/')
     return render(request, 'register.html')
+
+
 def logout_page(request):
     logout(request)
     return redirect('/login/')
+
+
+def delete_page(request):
+    queryset = Tasks.objects.all()
+
+    context = {'Tasks': queryset}
+    return render(request, 'delete.html',context)
