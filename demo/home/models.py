@@ -6,5 +6,6 @@ from django.contrib.auth.models import User
 class Tasks(models.Model):
     User = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
+    username=models.CharField(max_length=100, null=True, blank=True)
     task_description = models.CharField(max_length=100)
     status = models.CharField(default="pending", max_length=50)
