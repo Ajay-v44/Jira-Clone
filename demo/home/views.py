@@ -2,9 +2,14 @@ from contextlib import redirect_stderr
 from django.shortcuts import render, redirect
 from .models import *
 from django.http import JsonResponse
-
+from django.contrib import messages
+from django.contrib.auth import authenticate,login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+
+@login_required(login_url="/login")
 def home(request):
     if request.method == "POST":
         data = request.POST
@@ -57,7 +62,45 @@ def update_task_status(request, id, status):
 
 
 def login_page(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=email, password=password)  # Use authenticate to verify the user's credentials
+
+        if user is not None:
+            login(request, user)  
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid login credentials')
+            return redirect('/login/')
+
     return render(request, 'login.html')
 
 def register_page(request):
-    return render(request,'register.html')
+    if request.method == "POST":
+        first_name = request.POST.get('fname')
+        last_name = request.POST.get('lname')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = User.objects.filter(email=email)
+
+        if user.exists():
+
+            messages.error(request, 'User Name Already Taken')
+        else:
+
+            user = User.objects.create(
+                username=email,
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+
+
+            )
+            user.set_password(password)
+            user.save()
+            messages.info(request, ' Account Created Successfully ')
+
+            return redirect('/register/')
+    return render(request, 'register.html')
