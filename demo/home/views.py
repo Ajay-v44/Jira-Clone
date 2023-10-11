@@ -17,10 +17,10 @@ def home(request):
         task = data.get('task')
         Tasks.objects.create(
             task_description=task,
-            User_id=email,
+            username=email,
         )
         print(task)
-    queryset = Tasks.objects.all()
+    queryset = Tasks.objects.filter(username=email)
 
     context = {'Tasks': queryset}
 
