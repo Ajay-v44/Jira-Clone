@@ -104,3 +104,4 @@ def register_page(request):
 
             return redirect('/register/')
     return render(request, 'register.html')
+
