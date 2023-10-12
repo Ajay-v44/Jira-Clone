@@ -54,28 +54,39 @@
       .task-container:hover i {
         color: #555;
       }
+      .div2 {
+        background: rgb(2, 0, 36);
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 28, 9, 0.9573880577621674) 47%, rgba(0, 212, 255, 1) 100%);
+        color: white;
+      }
+      .div3,
+      .div1 {
+        background: rgb(131, 58, 180);
+        background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+      }
+      .addtask {
+        background: rgb(238, 174, 202);
+        background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+      }
     </style>
   </head>
 
   <body>
     <div class="container mt-3">
       <h2 class="h1 border-bottom border-light-subtle page-title" style="text-align: center;color: white;">To-Do List</h2>
-      <a href="{% url 'logout_page' %}">
-      <button type="button" class="btn btn-danger" id="liveToastBtn">Logout</button>
-    </a>
-      <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), .25)">  welcome  {{request.user.first_name}}   {{request.user.last_name}}</a>
+      <a href="{% url 'logout_page' %}"><button type="button" class="btn btn-danger" id="liveToastBtn">Logout</button></a>
+      <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), .25)">welcome {{ request.user.first_name }} {{ request.user.last_name }}</a>
       <div class="row m-3">
-        <div class="col-md-12 col-lg-3 m-3 col-sm-12 my-3 border border-dark-subtle shadow-lg card droppable task-container" id="left" style="height: 530px; background-color: #57B8FF;">
+        <div class="col-md-12 col-lg-3 m-3 col-sm-12 my-3 border border-dark-subtle shadow-lg card droppable task-container div1" id="left" style="height: 530px ">
           <div class="input-group">
             <div class="form p-3">
-              
               <form action="" method="post" class="">
                 {% csrf_token %}
                 <div class="form-floating mb-2">
                   <input type="text" class="form-control is-invalid" id="floatingInput" required name="task" placeholder="" aria-label="Recipient's username with two button addons" />
                   <label for="floatingInput">Task's To Be Completed</label>
                 </div>
-                <button class="btn btn-outline-secondary border border-danger" type="submit" style="color: white;">Add Task</button>
+                <button class="btn btn-outline-secondary border border-danger addtask" type="submit">Add Task</button>
               </form>
             </div>
           </div>
@@ -93,12 +104,9 @@
             {% endfor %}
           </div>
         </div>
-        <div class="col-md-12 m-3 card col-lg-4 col-sm-12 div2 border border-danger shadow-lg droppable task-container" id="right" style="background-color: #B66D0D;">
-          <h3 class="text-center" >
-            
-            <small class="text-body-secondary ">Completed Tasks</small>
-          </h3>
-          <hr>
+        <div class="col-md-12 m-3 card col-lg-4 col-sm-12 div2 border border-danger shadow-lg droppable task-container" id="right" style="">
+          <h3 class="text-center"><small class="text-light">Completed Tasks</small></h3>
+          <hr />
           <div class="tasks" style="overflow: scroll; overflow-x: hidden;">
             <ul>
               {% for task in Tasks %}
@@ -116,12 +124,9 @@
             </ul>
           </div>
         </div>
-        <div class="del col-md-12 col-lg-3 m-3 card col-sm-12 div3 my-3 border border-black shadow-lg droppable task-container" style="background-color: #FE6847;" id="right2">
-          <h3 class="text-center" >
-            
-            <small class="text-body-secondary ">Deleted Tasks</small>
-          </h3>
-          <hr>
+        <div class="del col-md-12 col-lg-3 m-3 card col-sm-12 div3 my-3 border border-black shadow-lg droppable task-container" style="" id="right2">
+          <h3 class="text-center"><small class="text-body-secondary">Deleted Tasks</small></h3>
+          <hr />
           <div class="tasks" style="overflow: scroll; overflow-x: hidden;">
             <ol style="">
               {% for task in Tasks %}
